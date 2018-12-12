@@ -5,11 +5,15 @@ const initState = {
     {id: 4, value: "This is a joke"},
     {id: 5, value: "This is a joke"},
     {id: 6, value: "This is a joke"},
+    {id: 7, value: "This is a joke"},
+    {id: 8, value: "This is a joke"},
+    {id: 9, value: "This is a joke"},
 ]}
 
 const jokeReducer = (state = initState, action) => {
     switch(action.type){
         case 'ADD_JOKE': 
+        // state.jokeList.concat({id: action.joke.body.id, value: action.joke.body.value})
         state.jokeList.push({id: action.joke.body.id, value: action.joke.body.value})
         return state
         case 'ADD_JOKE_ERROR': console.log('add joke error', action.err)
