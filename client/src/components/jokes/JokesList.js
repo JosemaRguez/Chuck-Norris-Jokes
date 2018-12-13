@@ -6,12 +6,12 @@ const JokeList = ({ jokes }) => {
     return (
         
         <div className="jokes-list section">
-            {jokes && jokes.map(joke => {
+            {jokes && Object.keys(jokes).map(joke => {
                 return (
-                    <Link to={"/joke/" + joke.id} key={joke.id}>
+                    <Link to={"/joke/" + joke} key={joke}>
                         <div className="card z-depth-1" >
                             <div className="card-content grey-text text-darken-3 hoverable">
-                                <p>{joke.value}</p>
+                                <p>{jokes[joke].value}</p>
                             </div>
                         </div>
                     </Link>

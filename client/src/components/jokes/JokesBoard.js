@@ -17,7 +17,7 @@ class JokesBoard extends Component {
                 this.loadJokes()
                 this.refs.iScroll.scrollTop -= 1
             }
-        });
+        })
     }
 
     loadJokes() {
@@ -41,7 +41,6 @@ class JokesBoard extends Component {
                                 <JokeList jokes={jokes} />
                             </div>
                         </div>
-
                 </div>
             </div>
         )
@@ -55,9 +54,9 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state.jokes.jokeList)
+    console.log(state)
     return {
-        jokes: state.jokes.jokeList
+        jokes: state.jokes
     }
 }
 

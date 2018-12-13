@@ -15,8 +15,6 @@ const JokeDetails = (props) => {
                 <button className="btn waves-effect #80cbc4 teal lighten-3" onClick={() => props.history.goBack()} type="submit" name="action">Back
                 </button>
             </div>
-
-
         )
     }
     else {
@@ -31,11 +29,12 @@ const JokeDetails = (props) => {
 
 const mapStateToProps = (state, ownProps) => {
     const id = ownProps.match.params.id
-    console.log(id)
-    const jokes = state.jokes.jokeList
-    const joke = jokes ? jokes[id] : null
+    const jokes = state.jokes
+    const joke = jokes ? jokes[id]: null
+    
     return {
         joke: joke
     }
 }
+
 export default connect(mapStateToProps)(JokeDetails)
