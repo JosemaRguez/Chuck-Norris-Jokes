@@ -13,9 +13,9 @@ class JokesBoard extends Component {
 
     componentDidMount() {
         this.refs.iScroll.addEventListener("scroll", () => {
-            if ((this.refs.iScroll.scrollTop + this.refs.iScroll.clientHeight) >= (this.refs.iScroll.scrollHeight - 2)) {
+            if ((this.refs.iScroll.scrollTop + this.refs.iScroll.clientHeight) >= (this.refs.iScroll.scrollHeight - 1)) {
                 this.loadJokes()
-                this.refs.iScroll.scrollTop -= 3
+                this.refs.iScroll.scrollTop -= 1
             }
         });
     }
@@ -30,11 +30,11 @@ class JokesBoard extends Component {
         const { jokes } = this.props
 
         return (
-            <div className="container" style={{ paddingRight: 350, paddingTop: 250 }}>
+            <div className="container" style={{ paddingRight: 350, paddingTop: 250, overflow: 'hidden'}}>
                 <div
                     className="vc"
                     ref="iScroll"
-                    style={{ height: '400px', width: '1000px', "overflowY": "auto" }}
+                    style={{ height: '400px', width: '1000px', "overflowY": "scroll" }}
                 >
                     <div className='jokes container'>
                         <div className='row'>
