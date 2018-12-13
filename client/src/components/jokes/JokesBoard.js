@@ -13,13 +13,17 @@ class JokesBoard extends Component {
 
     componentDidMount() {
         this.refs.iScroll.addEventListener("scroll", () => {
-            if (this.refs.iScroll.scrollTop + this.refs.iScroll.clientHeight >= (this.refs.iScroll.scrollHeight - 5)) {
-                this.refs.iScroll.scrollTop = this.refs.iScroll.scrollTop  - 5
-                this.setState({ loadingState: true })
-                this.props.addJoke()
-                this.setState({ loadingState: false })
+            if ((this.refs.iScroll.scrollTop + this.refs.iScroll.clientHeight) >= (this.refs.iScroll.scrollHeight - 2)) {
+                this.loadJokes()
+                this.refs.iScroll.scrollTop -= 3
             }
         });
+    }
+
+    loadJokes() {
+        this.setState({ loadingState: true })
+        this.props.addJoke()
+        this.setState({ loadingState: false })
     }
 
     render() {
