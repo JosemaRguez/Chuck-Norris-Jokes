@@ -1,46 +1,51 @@
 import React, { Component } from 'react'
 import JokeList from './JokesList'
-import InfiniteScroll from 'react-infinite-scroller';
 import { connect } from 'react-redux'
 import { addJoke } from '../../store/actions/jokesActions'
 
 class JokesBoard extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
-            tracks: [],
-            hasMoreItems: true,
-            nextHref: null
-        };
+            loadingState: false
+        }
     }
-    handleScroll() {
-        console.log('dale')
-        this.props.addJoke()
+
+    componentDidMount() {
+        this.refs.iScroll.addEventListener("scroll", () => {
+            console.log( this.refs.iScroll.scrollTop + this.refs.iScroll.clientHeight )
+            console.log(this.refs.iScroll.scrollHeight)
+            if (this.refs.iScroll.scrollTop + this.refs.iScroll.clientHeight >= (this.refs.iScroll.scrollHeight-20)) {
+                this.setState({ loadingState: true })
+                this.props.addJoke()
+                this.setState({ loadingState: false })
+            }
+        });
     }
 
     render() {
         const { jokes } = this.props
 
+        console.log(jokes)
+
         return (
-            
-                <div className='jokes container' style={{overflow:'auto'}}>
-                <InfiniteScroll
-                pageStart={0}
-                loadMore={this.handleScroll.bind(this)}
-                hasMore={this.state.hasMoreItems}
-                loader={<div className="loader" key={0}>Loading ...</div>}
-                useWindow={false}
-            >
-                    <div className='row'>
-                        <div className="col s12 m10">
-                            <JokeList jokes={jokes} />
+            <div style={{ padding: 250}}>
+                <div
+                    className="vc"
+                    ref="iScroll"
+                    style={{ height: '400px', width: '1000px', "overflowY": "scroll" }}
+                >
+                    <div className='jokes container'>
+                        <div className='row'>
+                            <div className="col s12 m10">
+                                <JokeList jokes={jokes} />
+                                {this.state.loadingState ? <p className="loading"> loading More Items..</p> : ""}
+                            </div>
                         </div>
                     </div>
-                    </InfiniteScroll>
-                </div>
-           
 
+                </div>
+            </div>
         )
     }
 }
@@ -52,6 +57,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state.jokes.jokeList)
     return {
         jokes: state.jokes.jokeList
     }

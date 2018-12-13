@@ -9,15 +9,15 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-      <div className="App">
-        <div className="Navbar">
-          <Navbar />
-          <Switch>
-            <Route exact path='/' component={JokesBoard} />
-            <Route path='/joke/:id' component={JokeDetails} />
-          </Switch>
+        <div className="App">
+          <div className="Navbar">
+            <Navbar />
+            <Switch>
+              <Route exact path='/' component={JokesBoard} />
+              <Route path='/joke/:id' component={JokeDetails} />
+            </Switch>
+          </div>
         </div>
-      </div>
       </BrowserRouter>
     );
   }
