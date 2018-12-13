@@ -4,7 +4,7 @@ import PageLinks from './PageLinks'
 
 const Navbar = () => {
     return (
-        <nav className="nav-wrapper grey darken-4">
+        <nav className="nav-wrapper #00695c teal darken-3">
             <div className="container">
                 <Link to='/' className='brand-logo'>Chuck's Jokes</Link>
                 <PageLinks />

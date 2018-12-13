@@ -30,20 +30,17 @@ class JokesBoard extends Component {
         const { jokes } = this.props
 
         return (
-            <div className="container" style={{ paddingRight: 350, paddingTop: 250, overflow: 'hidden'}}>
+            <div className="container" style={{ paddingRight: 400, paddingTop: 250}}>
                 <div
-                    className="vc"
+                    className="container"
                     ref="iScroll"
-                    style={{ height: '400px', width: '1000px', "overflowY": "scroll" }}
+                    style={{ height: '400px', width: '1000px', overflowY: 'scroll'}}
                 >
-                    <div className='jokes container'>
-                        <div className='row'>
+                        <div className='container'>
                             <div className="col s12 m10">
                                 <JokeList jokes={jokes} />
-                                {this.state.loadingState ? <p className="loading"> loading More Items..</p> : ""}
                             </div>
                         </div>
-                    </div>
 
                 </div>
             </div>
