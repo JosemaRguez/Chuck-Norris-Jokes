@@ -26,10 +26,8 @@ class JokesBoard extends Component {
     render() {
         const { jokes } = this.props
 
-        console.log(jokes)
-
         return (
-            <div style={{ padding: 250}}>
+            <div className="container" style={{ paddingRight: 300, paddingTop: 250 }}>
                 <div
                     className="vc"
                     ref="iScroll"
