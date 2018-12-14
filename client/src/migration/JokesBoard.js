@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import JokeList from './JokesList'
 import { connect } from 'react-redux'
 import { addJoke } from '../../store/actions/jokesActions'
-import '../../styles/style.css'
+import './style.css'
 
 class JokesBoard extends Component {
     constructor(props) {
@@ -16,9 +16,9 @@ class JokesBoard extends Component {
         this.refs.iScroll.addEventListener("scroll", () => {
             if ((this.refs.iScroll.scrollTop + this.refs.iScroll.clientHeight) >= (this.refs.iScroll.scrollHeight - 1)) {
                 this.loadJokes()
-                this.refs.iScroll.scrollTop -= 1
+                this.refs.iScroll.scrollTop -= 2
             }
-        })
+        });
     }
 
     loadJokes() {
@@ -54,8 +54,9 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state.jokes.jokeList)
     return {
-        jokes: state.jokes
+        jokes: state.jokes.jokeList
     }
 }
 
