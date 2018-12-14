@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import JokeList from './JokesList'
 import { connect } from 'react-redux'
 import { addJoke } from '../../store/actions/jokesActions'
+import { loadSomeJokes } from '../../store/actions/jokesActions'
 
 class JokesBoard extends Component {
     constructor(props) {
@@ -28,7 +29,7 @@ class JokesBoard extends Component {
 
     render() {
         const { jokes } = this.props
-
+        this.props.loadSomeJokes()
         return (
             <div className="container" style={{ paddingRight: 400, paddingTop: 250}}>
                 <div
@@ -53,11 +54,16 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
+const mapSomeJokes = (dispatch) => {
+    return {
+        loadSomeJokes: () => dispatch(loadSomeJokes())
+    }
+}
+
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         jokes: state.jokes
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(JokesBoard)
+export default connect(mapStateToProps, mapDispatchToProps, mapSomeJokes)(JokesBoard)
