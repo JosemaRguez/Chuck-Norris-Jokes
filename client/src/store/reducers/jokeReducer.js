@@ -1,18 +1,20 @@
 const jokeList = {
-        'fdsfadsfds': {value: "This is a joke"},
-        'ffdfaddfsfds': {value: "You are a bitch"},
-        'fd3dfadsfds': {value: "Oh yes you are"},
-        'fd5adsfds': {value: "Dummy data here"},
-        'fdsfadsfd32s': {value: "Yes it is dummy data"},
-        'adsfjkdsj': {value: "Datafonoooooooooo"},
-        'djflkda': {value: "This is a joke"},
-        'fkdjf1': {value: "This is a joke"},
-        'fjdlks495': {value: "This is a joke"}
-    }
+    'fdsfadsfds': { value: "This is a joke", category: "null" },
+    'ffdfaddfsfds': { value: "You are a bitch", category: "movies" },
+    'fd3dfadsfds': { value: "Oh yes you are", category: "songs" },
+    'fd5adsfds': { value: "Dummy data here", category: "null" },
+    'fdsfadsfd32s': { value: "Yes it is dummy data", category: "movies" },
+    'adsfjkdsj': { value: "Datafonoooooooooo", category: "null" },
+    'djflkda': { value: "This is a joke", category: "series" },
+    'fkdjf1': { value: "This is a joke", category: "internet" },
+    'fjdlks495': { value: "This is a joke", category: "null" }
+}
 
 const jokeReducer = (state = jokeList, action) => {
     switch (action.type) {
-        case 'ADD_JOKE': state[action.joke.body.id] = {value: action.joke.body.value}
+        case 'ADD_JOKE': var category = action.joke.body.category
+            if (category == null) { category = "none" }
+            state[action.joke.body.id] = { value: action.joke.body.value, category: category }
             return state
         case 'ADD_JOKE_ERROR': console.log('add joke error', action.err)
             break

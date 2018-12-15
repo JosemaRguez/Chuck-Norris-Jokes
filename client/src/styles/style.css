@@ -1,33 +1,48 @@
 .jokesContainer{
     position: absolute;
     padding-left: 200px;
-    padding-top: 250px;
+	padding-top: 100px;
 }
 
-.scrollbar
-{
+.jokesFilter{
+	padding-left: 500px;
+}
+
+.jokesTopContainer{
+    position: absolute;
+    padding-left: 500px;
+	padding-top: 10px;
+	height: 500px;
+	width: 1000px;
+}
+
+.scrollbar{
 	float: left;
-	height: 400px;
+	height: 500px;
 	width: 1000px;
     overflow-y: scroll;
 }
 
+#topTitle{
+	color:#414288
+}
+
+
 /*
- *  STYLE 3
+ *  STYLE 
  */
-#style-3::-webkit-scrollbar-track
-{
+#style-3::-webkit-scrollbar-trac{
 	box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 	background-color: #F5F5F5;
 }
 
-#style-3::-webkit-scrollbar
-{
+#style-3::-webkit-scrollbar{
 	width: 6px;
 	background-color: #F5F5F5;
 }
 
-#style-3::-webkit-scrollbar-thumb
-{
-	background-color: #000000;
+#style-3::-webkit-scrollbar-thumb{
+	background-color: #414288;
 }
+
+

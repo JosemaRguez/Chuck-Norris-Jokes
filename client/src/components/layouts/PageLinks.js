@@ -6,7 +6,7 @@ const PageLinks = () => {
     return (
         <ul className="right">
             <li><NavLink to='/'>Random Jokes</NavLink></li>
-            <li><NavLink to='/'>Top Jokes</NavLink></li>
+            <li><NavLink to='/topjokes'>Top Jokes</NavLink></li>
         </ul>
     )
 }

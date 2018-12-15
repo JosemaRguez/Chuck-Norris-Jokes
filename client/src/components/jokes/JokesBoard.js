@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import JokeList from './JokesList'
+import JokesFilter from './JokesFilter'
 import { connect } from 'react-redux'
 import { addJoke } from '../../store/actions/jokesActions'
 import '../../styles/style.css'
@@ -8,10 +9,11 @@ class JokesBoard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            loadingState: false
+            loadingState: false,
+            lastScrollHeight: 0
         }
     }
-
+    
     componentDidMount() {
         this.refs.iScroll.addEventListener("scroll", () => {
             if ((this.refs.iScroll.scrollTop + this.refs.iScroll.clientHeight) >= (this.refs.iScroll.scrollHeight - 1)) {
@@ -32,6 +34,7 @@ class JokesBoard extends Component {
 
         return (
             <div className="jokesContainer">
+                {/* <JokesFilter /> */}
                 <div
                     className="scrollbar" id="style-3"
                     ref="iScroll"
