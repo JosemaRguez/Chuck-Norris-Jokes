@@ -13,6 +13,7 @@ class JokesBoard extends Component {
             loadingState: false,
             lastScrollHeight: 0,
             displayMenu: false,
+            categorySelected: 'none'
         }
         this.componentDidMount = this.componentDidMount.bind(this)
         this.handleLoad = this.handleLoad.bind(this)
@@ -50,6 +51,10 @@ class JokesBoard extends Component {
         })
     }
 
+    handleOnClick = (e) => {
+        this.setState({categorySelected: e.target.innerHTML})
+    }
+
     handleLoad() {
         this.refs.iScroll.scrollTop = this.refs.iScroll.scrollHeight - 5
     }
@@ -62,10 +67,10 @@ class JokesBoard extends Component {
             <div>
                 <div className="dropdown">
                     <p style={{ textAlign: 'center' }}>Filter by category</p>
-                    <div className="dropDownButton" id="dropdownSelected" onClick={this.showDropdownMenu}>--Category--</div>
+                    <div className="dropDownButton" id="dropdownSelected" onClick={this.showDropdownMenu}>{this.state.categorySelected}</div>
                     {this.state.displayMenu && <ul className="dropdownList" id="style-3">
                         {categories.map(item => (
-                            <Link to={"/filter/" + item} key={item}><li className="list">{item}</li></Link>
+                            <li className="list" key={item} onClick={this.handleOnClick}>{item}</li>
                         ))}
                     </ul>}
                 </div>
@@ -78,7 +83,7 @@ class JokesBoard extends Component {
                     >
                         <div className='container'>
                             <div className="col s12 m10">
-                                <JokeList jokes={jokes} />
+                                <JokeList jokes={jokes} category={this.state.categorySelected}/>
                             </div>
                         </div>
                     </div>

@@ -37,7 +37,7 @@ class JokesFilter extends Component {
         const { jokes } = this.props
         const { categories } = this.props
         const category = this.props.match.params.category
-        
+
         return (
             <div>
                 <div className="dropdown">
@@ -58,7 +58,7 @@ class JokesFilter extends Component {
                     >
                         <div className='container'>
                             <div className="col s12 m10">
-                                <JokeList jokes={jokes} />
+                                <JokeList jokes={jokes} category={category}/>
                             </div>
                         </div>
                     </div>
