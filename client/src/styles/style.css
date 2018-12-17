@@ -1,17 +1,23 @@
-.jokesContainer{
-    position: absolute;
-    padding-left: 200px;
-	padding-top: 100px;
+body{
+	background-color: #5BC0EB;
 }
 
-.jokesFilter{
-	padding-left: 500px;
+.jokesContainer{
+    position: absolute;
+	padding-left: 100px;
+	padding-top: 50px;
 }
+
+.randomJokeTitle{
+	text-align: center;
+	color:#E55934;
+	padding-bottom: 20px;
+}
+
 
 .jokesTopContainer{
     position: absolute;
     padding-left: 500px;
-	padding-top: 10px;
 	height: 500px;
 	width: 1000px;
 }
@@ -24,12 +30,11 @@
 }
 
 #topTitle{
-	color:#414288
+	color:#E55934
 }
 
-
 /*
- *  STYLE 
+ *  SCROLL BAR
  */
 #style-3::-webkit-scrollbar-trac{
 	box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
@@ -42,7 +47,72 @@
 }
 
 #style-3::-webkit-scrollbar-thumb{
-	background-color: #414288;
+	background-color: #FF9F1C;
 }
 
 
+/*
+ *  SCROLL BAR
+ */
+
+/*
+*
+* DROPDOWN
+*
+ */
+.dropdown {
+	position: absolute;
+	padding-left: 1200px;
+}
+
+ul.dropdownList{
+	overflow-y: scroll;
+	height: 300px;
+	margin: 0;
+	padding: 0;
+	right: 0px;
+	background-color: #9BC53D;
+	font-weight:bold;
+	position: absolute;
+	width: "200px";
+	box-shadow: 0px 8px 16px 0px rgba(240, 0, 0, 0.2);
+}
+
+li.list{
+	text-decoration: none;
+	padding: 16px;
+	color: #e5e5e5;
+}
+
+li.list:last-child {
+	border-bottom: none;
+	color: #e5e5e5;
+}
+
+li.list:hover {
+	background-color: #e5e5e5;
+}
+
+.dropDownButton{
+	width:145px;
+	background-color:#9BC53D ;
+	padding:12px;
+	border-radius:5px;
+	font-weight:bold;
+	color:#e5e5e5;
+}
+
+.dropDownButton:before{
+	content:"";
+	position:absolute;
+	border: 10px solid;
+	border-color: white transparent transparent transparent;
+	right:15px;
+	top: 70px;
+}
+
+/*
+*
+* DROPDOWN
+*
+ */

@@ -4,7 +4,8 @@ import Navbar from './components/layouts/Navbar'
 import JokesBoard from './components/jokes/JokesBoard'
 import JokeDetails from './components/jokes/JokeDetails'
 import JokesTop from './components/jokes/JokesTop'
-
+import JokesFilter from './components/jokes/JokesFilter'
+import './styles/style.css'
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
             <Navbar />
             <Switch >
               <Route exact path='/' component={JokesBoard} />
+              <Route path='/filter/:category' component={JokesFilter} />
               <Route path='/topjokes' component={JokesTop} /> 
               <Route path='/joke/:id' component={JokeDetails} />
             </Switch>

@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var getJoke = require('./routes/getjoke');
 var savejoke = require('./routes/savejoke');
 var gettop = require('./routes/gettop');
+var getcategories = require('./routes/getcategories');
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use('/users', usersRouter);
 app.use('/getjoke', getJoke);
 app.use('/savejoke', savejoke);
 app.use('/gettop', gettop);
+app.use('/getcategories',getcategories);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

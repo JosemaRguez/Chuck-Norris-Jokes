@@ -23,7 +23,6 @@ router.post('/', function(req, res) {
 
 		fs.writeFile('./database/topjokes.json', JSON.stringify(jokesSaved) , (err) => {  
    			if (err) throw err;
-    		console.log('Data written to file');
 		});
 	});
 
