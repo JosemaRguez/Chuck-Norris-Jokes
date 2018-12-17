@@ -1,7 +1,7 @@
 const jokeList = {
     'fdsfadsfds': { value: "This is a joke", category: "explicit" },
     'ffdfaddfsfds': { value: "You are a bitch", category: "sport" },
-    'fd3dfadsfds': { value: "Oh yes you are", category: "songs" },
+    'fd3dfadsfds': { value: "Oh yes you are", category: "movie" },
     'fd5adsfds': { value: "Dummy data here", category: "null" },
     'fdsfadsfd32s': { value: "Yes it is dummy data", category: "movies" },
     'adsfjkdsj': { value: "Datafonoooooooooo", category: "null" }

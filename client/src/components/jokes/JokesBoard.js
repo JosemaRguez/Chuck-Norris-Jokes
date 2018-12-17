@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import JokeList from './JokesList'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { addJoke } from '../../store/actions/jokesActions'
 import { getCategories } from '../../store/actions/categoriesActions'
@@ -13,7 +12,7 @@ class JokesBoard extends Component {
             loadingState: false,
             lastScrollHeight: 0,
             displayMenu: false,
-            categorySelected: 'none'
+            categorySelected: '--Select--'
         }
         this.componentDidMount = this.componentDidMount.bind(this)
         this.handleLoad = this.handleLoad.bind(this)

@@ -19,20 +19,20 @@ const JokeList = ({ jokes, category }) => {
                         </Link>
                     )
                 }
-                else if (jokes[joke].category !== category) {
-                    return
+                else if (category === '--Select--') {
+                    return (
+                        <Link to={"/joke/" + joke} key={joke}>
+                            <div className="card z-depth-1" >
+                                <div className="card-content grey-text text-darken-3 hoverable">
+                                    <p className="black-text">{jokes[joke].value}</p>
+                                    <p className="grey-text right">Category: {jokes[joke].category}</p>
+                                </div>
+                            </div>
+                        </Link>
+                    )
                 }
                 else {
-                    return(
-                    <Link to={"/joke/" + joke} key={joke}>
-                        <div className="card z-depth-1" >
-                            <div className="card-content grey-text text-darken-3 hoverable">
-                                <p className="black-text">{jokes[joke].value}</p>
-                                <p className="grey-text right">Category: {jokes[joke].category}</p>
-                            </div>
-                        </div>
-                    </Link>
-                    )
+                    return
                 }
             }
             )}
