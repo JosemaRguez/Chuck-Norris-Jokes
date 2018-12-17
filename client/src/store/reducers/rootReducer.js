@@ -1,11 +1,10 @@
 import jokeReducer from './jokeReducer'
 import topJokesReducer from './topJokesReducer'
-// import categoriesReducer from './categoriesReducer'
+import categoriesReducer from './categoriesReducer'
 import { combineReducers } from 'redux'
 
 const rootReducer = combineReducers({
-    // categories: categoriesReducer,
-    filterApplied: jokeReducer,
+    categories: categoriesReducer,
     jokes: jokeReducer,
     topJokes: topJokesReducer
 })

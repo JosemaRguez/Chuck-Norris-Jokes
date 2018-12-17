@@ -3,7 +3,7 @@ import JokeList from './JokesList'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { addJoke } from '../../store/actions/jokesActions'
-import { getCategories } from '../../store/actions/jokesActions'
+import { getCategories } from '../../store/actions/categoriesActions'
 import '../../styles/style.css'
 
 class JokesBoard extends Component {
@@ -12,7 +12,6 @@ class JokesBoard extends Component {
         this.state = {
             loadingState: false,
             lastScrollHeight: 0,
-            categoryList: ['--Category--'],
             displayMenu: false,
         }
         this.componentDidMount = this.componentDidMount.bind(this)
@@ -22,8 +21,8 @@ class JokesBoard extends Component {
     }
 
     componentDidMount() {
+        this.props.getCategories()
         this.handleLoad()
-        // this.props.getCategories()
         this.refs.iScroll.addEventListener("scroll", () => {
             if ((this.refs.iScroll.scrollTop + this.refs.iScroll.clientHeight) >= (this.refs.iScroll.scrollHeight - 1)) {
                 this.loadJokes()
@@ -55,26 +54,22 @@ class JokesBoard extends Component {
         this.refs.iScroll.scrollTop = this.refs.iScroll.scrollHeight - 5
     }
 
-    handleOnClick = (e) => {
-        e.preventDefault()
-        this.props.selectCategory(e.currentTarget.innerHTML)
-        document.getElementById("dropdownSelected").innerHTML = e.currentTarget.innerHTML
-    }
-
     render() {
-        const { jokes } = this.props.jokes
-        console.log(jokes)
+        const { jokes } = this.props
+        const { categories } = this.props
+
         return (
             <div>
                 <div className="dropdown">
                     <p style={{ textAlign: 'center' }}>Filter by category</p>
                     <div className="dropDownButton" id="dropdownSelected" onClick={this.showDropdownMenu}>--Category--</div>
-                    {this.state.displayMenu && <ul className="dropdownList">
-                        {jokes.map((item) => (
-                            <Link to='/filter'><li className="list" key={item} onClick={this.handleOnClick}>{item}</li></Link>
+                    {this.state.displayMenu && <ul className="dropdownList" id="style-3">
+                        {categories.map(item => (
+                            <Link to={"/filter/" + item} key={item}><li className="list">{item}</li></Link>
                         ))}
                     </ul>}
                 </div>
+
                 <div className="jokesContainer">
                     <h3 className='randomJokeTitle'>Scroll down to get more jokes!</h3>
                     <div
@@ -102,7 +97,8 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     return {
-        jokes: state
+        jokes: state.jokes,
+        categories: state.categories
     }
 
 }

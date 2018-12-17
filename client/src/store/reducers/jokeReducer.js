@@ -14,8 +14,6 @@ const jokeReducer = (state = jokeList, action) => {
             return state
         case 'ADD_JOKE_ERROR': console.log('add joke error', action.err)
             break
-        case 'GET_CATEGORIES': state.categories = ["--Category--", ...action.categories]
-            return state.categories
         default:
             return state
     }
