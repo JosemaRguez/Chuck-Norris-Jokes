@@ -6,13 +6,14 @@ import { getCategories } from '../../store/actions/categoriesActions'
 import '../../styles/style.css'
 
 class JokesBoard extends Component {
-    constructor(props) {
-        super(props);
+    constructor(props,ownProps) {
+        super(props)
         this.state = {
             loadingState: false,
             lastScrollHeight: 0,
             displayMenu: false,
-            categorySelected: '--Select--'
+            categorySelected: '--Select--',
+            lastScrollSize: 500
         }
         this.componentDidMount = this.componentDidMount.bind(this)
         this.handleLoad = this.handleLoad.bind(this)
@@ -23,10 +24,12 @@ class JokesBoard extends Component {
     componentDidMount() {
         this.props.getCategories()
         this.handleLoad()
+       
         this.refs.iScroll.addEventListener("scroll", () => {
-            if ((this.refs.iScroll.scrollTop + this.refs.iScroll.clientHeight) >= (this.refs.iScroll.scrollHeight - 1)) {
+            this.setState({lastScrollSize: this.refs.iScroll.scrollTop})
+            if (((this.refs.iScroll.scrollTop + this.refs.iScroll.clientHeight) >= (this.refs.iScroll.scrollHeight-1)) && !this.state.loadingState ) {
+                this.refs.iScroll.scrollTop -= 2
                 this.loadJokes()
-                this.refs.iScroll.scrollTop -= 1
             }
         })
     }
@@ -55,7 +58,7 @@ class JokesBoard extends Component {
     }
 
     handleLoad() {
-        this.refs.iScroll.scrollTop = this.refs.iScroll.scrollHeight - 5
+        // this.refs.iScroll.scrollTop = this.props.lastScrollSize
     }
 
     render() {

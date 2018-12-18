@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const JokeList = ({ jokes, category }) => {
-    console.log(category)
 
     return (
         <div className="jokes-list section">
@@ -32,7 +31,7 @@ const JokeList = ({ jokes, category }) => {
                     )
                 }
                 else {
-                    return
+                    return null
                 }
             }
             )}

@@ -3,7 +3,6 @@ body{
 }
 
 .jokesContainer{
-    position: absolute;
 	padding-left: 100px;
 	padding-top: 50px;
 }
@@ -14,9 +13,8 @@ body{
 	padding-bottom: 20px;
 }
 
-
 .jokesTopContainer{
-    position: absolute;
+    position: relative;
     padding-left: 500px;
 	height: 500px;
 	width: 1000px;
