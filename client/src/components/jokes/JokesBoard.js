@@ -3,6 +3,8 @@ import JokeList from './JokesList'
 import { connect } from 'react-redux'
 import { addJoke } from '../../store/actions/jokesActions'
 import { getCategories } from '../../store/actions/categoriesActions'
+import viewportImage  from '../../images/chuckArms.png'
+import balloonImage  from '../../images/balloon.png'
 import '../../styles/style.css'
 
 class JokesBoard extends Component {
@@ -27,8 +29,8 @@ class JokesBoard extends Component {
        
         this.refs.iScroll.addEventListener("scroll", () => {
             this.setState({lastScrollSize: this.refs.iScroll.scrollTop})
-            if (((this.refs.iScroll.scrollTop + this.refs.iScroll.clientHeight) >= (this.refs.iScroll.scrollHeight-1)) && !this.state.loadingState ) {
-                this.refs.iScroll.scrollTop -= 2
+            if (((this.refs.iScroll.scrollTop + this.refs.iScroll.clientHeight) >= (this.refs.iScroll.scrollHeight-20)) && !this.state.loadingState ) {
+                this.refs.iScroll.scrollTop -= 10
                 this.loadJokes()
             }
         })
@@ -76,9 +78,10 @@ class JokesBoard extends Component {
                         ))}
                     </ul>}
                 </div>
-
+                
+                <img style={{width: '203px', height:'550px', left: '30px', top: '82px', position: 'absolute'}} alt='png' src={viewportImage} />
+                <img style={{width: '600px', height:'125px', left:'220px', top: '30px', position: 'relative'}} alt='png' src={balloonImage} />
                 <div className="jokesContainer">
-                    <h3 className='randomJokeTitle'>Scroll down to get more jokes!</h3>
                     <div
                         className="scrollbar" id="style-3"
                         ref="iScroll"
