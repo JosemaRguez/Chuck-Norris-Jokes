@@ -26,22 +26,22 @@ body{
 }
 
 .jokesTopContainer{
-	position: relative;
+	position: absolute;
 	left: 250px;
 	width: 950px;
 }
 
-.scrollbar{
+/*
+ *  SCROLL BAR
+ */
+ .scrollbar{
 	float: left;
 	height: 400px;
 	width: 900px;
 	overflow-y: scroll;
+	scroll-behavior: auto;
 }
 
-
-/*
- *  SCROLL BAR
- */
 #style-3::-webkit-scrollbar-trac{
 	box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 	background-color: #E71D36;
@@ -113,8 +113,8 @@ li.list:hover {
 }
 
 .dropDownButton:before{
-	content:"";
-	position:absolute;
+	content: "";
+	position: absolute;
 	border: 10px solid;
 	border-color: white transparent transparent transparent;
 	right:15px;

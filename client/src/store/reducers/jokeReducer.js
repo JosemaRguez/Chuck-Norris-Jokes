@@ -1,11 +1,6 @@
-const jokeList = {
-    // 'fdsfadsfds': { value: "This is a joke", category: "explicit" },
-    // 'ffdfaddfsfds': { value: "You are a bitch", category: "sport" },
-    // 'fd3dfadsfds': { value: "Oh yes you are", category: "movie" },
-    // 'fd5adsfds': { value: "Dummy data here", category: "null" },
-    // 'fdsfadsfd32s': { value: "Yes it is dummy data", category: "movies" },
-    // 'adsfjkdsj': { value: "Datafonoooooooooo", category: "null" }
-}
+const jokeList = {}
+
+
 const jokeReducer = (state = jokeList, action) => {
     switch (action.type) {
         case 'ADD_JOKE': var category = action.joke.body.category

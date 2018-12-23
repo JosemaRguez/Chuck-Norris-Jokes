@@ -10,21 +10,32 @@ import '../../styles/style.css'
 class JokesBoard extends Component {
     constructor(props) {
         super(props)
-
         this.state = {
             loadingState: false,
             displayMenu: false,
             categorySelected: '--Select--'
         }
-        this.componentDidMount = this.componentDidMount.bind(this)
+
         this.showDropdownMenu = this.showDropdownMenu.bind(this)
         this.hideDropdownMenu = this.hideDropdownMenu.bind(this)
-        this.loadJokes = this.loadJokes.bind(this)
+    }
+
+    componentWillMount(){
+        this.props.getCategories()
     }
 
     componentDidMount() {
-        this.props.getCategories()
         this.refs.iScroll.scrollTop = this.refs.iScroll.scrollHeight-2
+        
+        //Load first jokes until user can scroll on viewport
+        this.refs.iScroll.addEventListener("wheel", () => {
+                if(this.refs.iScroll.scrollTop <= 0){
+                    this.setState({ loadingState: true })
+                    this.loadJokes()
+                    this.setState({ loadingState: false })
+                }
+        })
+
 
         this.refs.iScroll.addEventListener("scroll", () => {
             if (((this.refs.iScroll.scrollTop + this.refs.iScroll.clientHeight) >= (this.refs.iScroll.scrollHeight - (this.refs.iScroll.scrollHeight * 0.001))) && !this.state.loadingState ) {
@@ -36,7 +47,7 @@ class JokesBoard extends Component {
         })
     }
 
-    loadJokes() {
+    loadJokes = () => {
         this.props.addJoke()
     }
 
@@ -62,7 +73,6 @@ class JokesBoard extends Component {
         const { jokes } = this.props
         const { categories } = this.props
 
-
         return (
             <div>
                 <div className="dropdown">
@@ -82,6 +92,7 @@ class JokesBoard extends Component {
                         className="scrollbar" id="style-3"
                         ref="iScroll"
                     >
+                        <h4 className="category-text">SCROLL HERE TO LOAD JOKES!</h4>
                         <div className='container'>
                             <div className="col s12 m10">
                                 <JokeList jokes={jokes} category={this.state.categorySelected}/>
@@ -102,6 +113,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state)
     return {
         jokes: state.jokes,
         categories: state.categories

@@ -18,7 +18,7 @@ const JokeList = ({ jokes, category }) => {
                         </Link>
                     )
                 }
-                else if (category === '--Select--') {
+                else if (String(category) === '--Select--') {
                     return (
                         <Link to={"/joke/" + joke} key={joke}>
                             <div className="card z-depth-1" >

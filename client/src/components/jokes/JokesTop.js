@@ -6,10 +6,10 @@ import '../../styles/style.css'
 class JokesTop extends Component {
     constructor(props) {
         super(props)
-        this.componentDidMount = this.componentDidMount.bind(this)
+        this.componentWillMount = this.componentWillMount.bind(this)
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.props.getTop()
     }
 
@@ -19,7 +19,7 @@ class JokesTop extends Component {
         
         return (
             <div className="jokesTopContainer">
-                <h1 className="center">TOP {numTop} JOKES</h1>
+                <h1 className="category-text">TOP {numTop} JOKES</h1>
                 {topJokes && topJokes.map(joke => {
                     return (
                         <div className="card z-depth-1" key={joke.id} >
