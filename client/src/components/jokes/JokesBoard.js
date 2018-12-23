@@ -89,7 +89,7 @@ class JokesBoard extends Component {
                 <img style={{width: '600px', height:'125px', left:'220px', top: '30px', position: 'relative'}} alt='png' src={balloonImage} />
                 <div className="jokesContainer">
                     <div
-                        className="scrollbar" id="style-3"
+                        className="scrollbar" id="style-1"
                         ref="iScroll"
                     >
                         <h4 className="category-text">SCROLL HERE TO LOAD JOKES!</h4>
