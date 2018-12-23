@@ -9,6 +9,7 @@ export const addJoke = () => {
     }
 }
 
+
 export const saveJoke = (id, joke) => {
     fetch("/savejoke", {
         method: 'POST',

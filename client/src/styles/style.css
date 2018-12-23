@@ -66,6 +66,14 @@ body{
 * DROPDOWN
 *
  */
+
+ .category-text{
+	text-align: center;
+	font-weight: bold;
+	color: #E71D36;
+}
+
+
 .dropdown {
 	position: absolute;
 	left: 1200px;
@@ -98,11 +106,11 @@ li.list:hover {
 .dropDownButton{
 	width: 145px;
 	background-color:#2EC4B6 ;
-	padding:12px;
-	border-radius:5px;
-	font-weight:bold;
+	padding: 12px;
+	border-radius: 5px;
+	font-weight: bold;
 	color:#FDFFFC;
-}#FDFFFC
+}
 
 .dropDownButton:before{
 	content:"";

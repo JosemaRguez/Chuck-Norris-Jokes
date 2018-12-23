@@ -13,31 +13,26 @@ class JokesBoard extends Component {
 
         this.state = {
             loadingState: false,
-            lastScrollHeight: 0,
             displayMenu: false,
-            categorySelected: '--Select--',
-            lastScrollSize: 500
+            categorySelected: '--Select--'
         }
         this.componentDidMount = this.componentDidMount.bind(this)
-        this.handleLoad = this.handleLoad.bind(this)
         this.showDropdownMenu = this.showDropdownMenu.bind(this)
         this.hideDropdownMenu = this.hideDropdownMenu.bind(this)
+        this.loadJokes = this.loadJokes.bind(this)
     }
-
 
     componentDidMount() {
         this.props.getCategories()
-        this.refs.iScroll.scrollTop = this.state.lastScrollSize
+        this.refs.iScroll.scrollTop = this.refs.iScroll.scrollHeight-2
 
         this.refs.iScroll.addEventListener("scroll", () => {
-            if (((this.refs.iScroll.scrollTop + this.refs.iScroll.clientHeight) >= (this.refs.iScroll.scrollHeight-2)) && !this.state.loadingState ) {
+            if (((this.refs.iScroll.scrollTop + this.refs.iScroll.clientHeight) >= (this.refs.iScroll.scrollHeight - (this.refs.iScroll.scrollHeight * 0.001))) && !this.state.loadingState ) {
+                this.refs.iScroll.scrollTop -= (this.refs.iScroll.scrollHeight * 0.002)
                 this.setState({ loadingState: true })
                 this.loadJokes()
                 this.setState({ loadingState: false })
-                this.refs.iScroll.scrollTop -= 1
             }
-
-            this.setState({lastScrollSize: this.refs.iScroll.scrollHeight})
         })
     }
 
@@ -59,12 +54,8 @@ class JokesBoard extends Component {
     }
 
     handleOnClick = (e) => {
+        e.preventDefault()
         this.setState({categorySelected: e.target.innerHTML})
-    }
-
-    handleLoad() {
-        // this.refs.iScroll.scrollTop = this.props.lastScrollSize   
-            this.loadJokes()
     }
 
     render() {
@@ -75,7 +66,7 @@ class JokesBoard extends Component {
         return (
             <div>
                 <div className="dropdown">
-                    <p style={{ textAlign: 'center' }}>Filter by category</p>
+                    <p className="category-text">Filter by category</p>
                     <div className="dropDownButton" id="dropdownSelected" onClick={this.showDropdownMenu}>{this.state.categorySelected}</div>
                     {this.state.displayMenu && <ul className="dropdownList" id="style-3">
                         {categories.map(item => (
