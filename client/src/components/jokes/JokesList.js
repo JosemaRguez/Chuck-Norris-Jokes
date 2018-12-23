@@ -6,7 +6,7 @@ const JokeList = ({ jokes, category }) => {
     return (
         <div className="jokes-list section">
             {jokes && Object.keys(jokes).map(joke => {
-                if (jokes[joke].category === category) {
+                if (String(jokes[joke].category) === String(category)) {
                     return (
                         <Link to={"/joke/" + joke} key={joke}>
                             <div className="card z-depth-1" >

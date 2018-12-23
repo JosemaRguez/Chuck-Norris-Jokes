@@ -8,8 +8,9 @@ import balloonImage  from '../../images/balloon.png'
 import '../../styles/style.css'
 
 class JokesBoard extends Component {
-    constructor(props,ownProps) {
+    constructor(props) {
         super(props)
+
         this.state = {
             loadingState: false,
             lastScrollHeight: 0,
@@ -19,27 +20,29 @@ class JokesBoard extends Component {
         }
         this.componentDidMount = this.componentDidMount.bind(this)
         this.handleLoad = this.handleLoad.bind(this)
-        this.showDropdownMenu = this.showDropdownMenu.bind(this);
-        this.hideDropdownMenu = this.hideDropdownMenu.bind(this);
+        this.showDropdownMenu = this.showDropdownMenu.bind(this)
+        this.hideDropdownMenu = this.hideDropdownMenu.bind(this)
     }
+
 
     componentDidMount() {
         this.props.getCategories()
-        this.handleLoad()
-       
+        this.refs.iScroll.scrollTop = this.state.lastScrollSize
+
         this.refs.iScroll.addEventListener("scroll", () => {
-            this.setState({lastScrollSize: this.refs.iScroll.scrollTop})
-            if (((this.refs.iScroll.scrollTop + this.refs.iScroll.clientHeight) >= (this.refs.iScroll.scrollHeight-20)) && !this.state.loadingState ) {
-                this.refs.iScroll.scrollTop -= 10
+            if (((this.refs.iScroll.scrollTop + this.refs.iScroll.clientHeight) >= (this.refs.iScroll.scrollHeight-2)) && !this.state.loadingState ) {
+                this.setState({ loadingState: true })
                 this.loadJokes()
+                this.setState({ loadingState: false })
+                this.refs.iScroll.scrollTop -= 1
             }
+
+            this.setState({lastScrollSize: this.refs.iScroll.scrollHeight})
         })
     }
 
     loadJokes() {
-        this.setState({ loadingState: true })
         this.props.addJoke()
-        this.setState({ loadingState: false })
     }
 
     showDropdownMenu(event) {
@@ -60,12 +63,14 @@ class JokesBoard extends Component {
     }
 
     handleLoad() {
-        // this.refs.iScroll.scrollTop = this.props.lastScrollSize
+        // this.refs.iScroll.scrollTop = this.props.lastScrollSize   
+            this.loadJokes()
     }
 
     render() {
         const { jokes } = this.props
         const { categories } = this.props
+
 
         return (
             <div>

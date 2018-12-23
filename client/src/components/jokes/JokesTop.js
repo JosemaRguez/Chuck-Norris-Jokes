@@ -15,10 +15,11 @@ class JokesTop extends Component {
 
     render() {
         const { topJokes } = this.props
-
+        const { numTop } = this.props
+        
         return (
             <div className="jokesTopContainer">
-                <h1 id="topTitle" className="center">TOP 5 JOKES</h1>
+                <h1 className="center">TOP {numTop} JOKES</h1>
                 {topJokes && topJokes.map(joke => {
                     return (
                         <div className="card z-depth-1" key={joke.id} >
@@ -34,14 +35,16 @@ class JokesTop extends Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownState) => {
     return {
-        getTop: () => dispatch(getTop())
+        getTop: () => dispatch(getTop(ownState.match.params.num))
     }
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownState) => {
+    
     return {
-        topJokes: state.topJokes
+        topJokes: state.topJokes,
+        numTop: ownState.match.params.num
     }
 }
 
