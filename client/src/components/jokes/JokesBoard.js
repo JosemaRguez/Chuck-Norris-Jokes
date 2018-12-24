@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import JokeList from './JokesList'
 import { connect } from 'react-redux'
 import { addJoke } from '../../store/actions/jokesActions'
+import { saveScrollPos } from '../../store/actions/scrollActions'
 import { getCategories } from '../../store/actions/categoriesActions'
 import viewportImage  from '../../images/chuckArms.png'
 import balloonImage  from '../../images/balloon.png'
@@ -22,7 +23,7 @@ class JokesBoard extends Component {
     }
 
     componentDidMount() {
-        this.refs.iScroll.scrollTop = this.refs.iScroll.scrollHeight - (this.refs.iScroll.scrollHeight * 0.3)
+        this.refs.iScroll.scrollTop = this.props.scrollLastSize
         
         //Load first jokes until user can scroll on viewport
         this.refs.iScroll.addEventListener("wheel", () => {
@@ -40,6 +41,7 @@ class JokesBoard extends Component {
                 this.setState({ loadingState: true })
                 this.loadJokes()
                 this.setState({ loadingState: false })
+                this.props.saveScrollPos(this.refs.iScroll.scrollTop)
             }
         })
     }
@@ -105,14 +107,16 @@ class JokesBoard extends Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         addJoke: () => dispatch(addJoke()),
-        getCategories: () => dispatch(getCategories())
+        getCategories: () => dispatch(getCategories()),
+        saveScrollPos: (scrollPos) => dispatch(saveScrollPos(scrollPos))
     }
 }
 
 const mapStateToProps = (state) => {
     return {
         jokes: state.jokes,
-        categories: state.categories
+        categories: state.categories,
+        scrollLastSize: state.scrollLastSize
     }
 }
 
