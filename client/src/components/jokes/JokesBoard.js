@@ -15,9 +15,6 @@ class JokesBoard extends Component {
             displayMenu: false,
             categorySelected: '--Select--'
         }
-
-        this.showDropdownMenu = this.showDropdownMenu.bind(this)
-        this.hideDropdownMenu = this.hideDropdownMenu.bind(this)
     }
 
     componentWillMount(){
@@ -51,14 +48,14 @@ class JokesBoard extends Component {
         this.props.addJoke()
     }
 
-    showDropdownMenu(event) {
+    showDropdownMenu = (event) => {
         event.preventDefault()
         this.setState({ displayMenu: true }, () => {
             document.addEventListener('click', this.hideDropdownMenu)
         })
     }
 
-    hideDropdownMenu() {
+    hideDropdownMenu = () => {
         this.setState({ displayMenu: false }, () => {
             document.removeEventListener('click', this.hideDropdownMenu);
         })
