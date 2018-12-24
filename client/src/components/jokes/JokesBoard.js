@@ -22,7 +22,7 @@ class JokesBoard extends Component {
     }
 
     componentDidMount() {
-        this.refs.iScroll.scrollTop = this.refs.iScroll.scrollHeight-2
+        this.refs.iScroll.scrollTop = this.refs.iScroll.scrollHeight - (this.refs.iScroll.scrollHeight * 0.3)
         
         //Load first jokes until user can scroll on viewport
         this.refs.iScroll.addEventListener("wheel", () => {
@@ -114,7 +114,6 @@ const mapStateToProps = (state) => {
         jokes: state.jokes,
         categories: state.categories
     }
-
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(JokesBoard)
