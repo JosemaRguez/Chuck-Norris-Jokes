@@ -40,7 +40,6 @@ body{
 	height: 400px;
 	width: 900px;
 	overflow-y: scroll;
-	scroll-behavior: smooth;
 }
 
 #style-1::-webkit-scrollbar-trac{
