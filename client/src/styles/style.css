@@ -4,7 +4,8 @@ body{
 
 .nav-wrapper{
 	background-color: #011627;
-	width: 100%;
+	position: sticky;
+	top: 0;
 	height: 63px;
 }
 
