@@ -38,19 +38,15 @@ class JokesBoard extends Component {
             if (((this.refs.iScroll.scrollTop + this.refs.iScroll.clientHeight) >= (this.refs.iScroll.scrollHeight - (this.refs.iScroll.scrollHeight * 0.01))) && !this.state.loadingState) {
                 this.loadJokes()
                 this.refs.iScroll.scrollTop -= (this.refs.iScroll.scrollHeight * 0.011)
-                
             }
-
         })
     }
 
     loadJokes = () => {
-        
         this.setState({ loadingState: true }, () => {
             this.props.addJoke()
             this.setState({ loadingState: false })
         })
-
     }
 
     showDropdownMenu = (event) => {
