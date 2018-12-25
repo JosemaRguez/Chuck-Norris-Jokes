@@ -45,9 +45,9 @@ class JokesBoard extends Component {
     }
 
     loadJokes = () => {
-        this.props.addJoke()
+        
         this.setState({ loadingState: true }, () => {
-            
+            this.props.addJoke()
             this.setState({ loadingState: false })
         })
 
