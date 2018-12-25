@@ -27,30 +27,31 @@ class JokesBoard extends Component {
 
         //Load first jokes until user can scroll on viewport
         this.refs.iScroll.addEventListener("wheel", () => {
-            if (this.refs.iScroll.scrollTop <= 0) {
-                this.setState({ loadingState: true }, () => {
-                    this.loadJokes()
-                    this.setState({ loadingState: false })
-                })
+            if (this.refs.iScroll.scrollTop <= 0 && !this.state.loadingState) {
+                this.loadJokes()
             }
         })
 
-
         this.refs.iScroll.addEventListener("scroll", () => {
             this.props.saveScrollPos(this.refs.iScroll.scrollTop)
+            console.log(this.state.loadingState)
+
             if (((this.refs.iScroll.scrollTop + this.refs.iScroll.clientHeight) >= (this.refs.iScroll.scrollHeight - (this.refs.iScroll.scrollHeight * 0.001))) && !this.state.loadingState) {
                 this.refs.iScroll.scrollTop -= (this.refs.iScroll.scrollHeight * 0.002)
-                this.setState({ loadingState: true }, () => {
-                    this.loadJokes()
-                    this.setState({ loadingState: false })
-                })
-                
+                this.loadJokes()
+
             }
+
         })
     }
 
     loadJokes() {
-        this.props.addJoke()
+        this.setState({ loadingState: true }, () => {
+            console.log(this.state.loadingState)
+            this.props.addJoke()
+            this.setState({ loadingState: false })
+        })
+
     }
 
     showDropdownMenu = (event) => {
@@ -77,6 +78,17 @@ class JokesBoard extends Component {
                 <h4 className="category-text">SCROLL HERE TO LOAD JOKES!</h4>
             )
         }
+        else if (((this.refs.iScroll.scrollTop + this.refs.iScroll.clientHeight) >= (this.refs.iScroll.scrollHeight - (this.refs.iScroll.scrollHeight * 0.1)))) {
+            return (
+                <div>
+                    <div className="progress">
+                        <div className="indeterminate"></div>
+                    </div>
+                    <p className="info-text">Keep scrolling</p>
+                </div>
+
+            )
+        }
     }
 
     render() {
@@ -97,16 +109,16 @@ class JokesBoard extends Component {
 
                 <img style={{ width: '203px', height: '550px', left: '30px', top: '82px', position: 'absolute' }} alt='png' src={viewportImage} />
                 <img style={{ width: '600px', height: '125px', left: '220px', top: '30px', position: 'relative' }} alt='png' src={balloonImage} />
-                <div className="jokesContainer">
+                <div className='jokesContainer'>
                     <div
-                        className="scrollbar" id="style-1"
-                        ref="iScroll"
+                        className='scrollbar' id='style-1'
+                        ref='iScroll'
                     >
-                        {this.handleMsg(jokes)}
                         <div className='container'>
-                            <div className="col s12 m10">
+                            <div className='col s12 m10'>
                                 <JokeList jokes={jokes} category={this.state.categorySelected} />
                             </div>
+                            {this.handleMsg(jokes)}
                         </div>
                     </div>
                 </div>

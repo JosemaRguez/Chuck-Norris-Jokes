@@ -40,7 +40,7 @@ body{
 	height: 400px;
 	width: 900px;
 	overflow-y: scroll;
-	scroll-behavior: auto;
+	scroll-behavior: smooth;
 }
 
 #style-1::-webkit-scrollbar-trac{
@@ -68,12 +68,17 @@ body{
 *
  */
 
- .category-text{
+.category-text{
 	text-align: center;
 	font-weight: bold;
 	color: #E71D36;
 }
 
+
+.info-text{
+	text-align: center;
+	color: #E71D36;
+}
 
 .dropdown {
 	position: absolute;
