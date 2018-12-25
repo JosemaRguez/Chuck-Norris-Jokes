@@ -34,7 +34,6 @@ class JokesBoard extends Component {
 
         this.refs.iScroll.addEventListener("scroll", () => {
             this.props.saveScrollPos(this.refs.iScroll.scrollTop)
-            console.log(this.state.loadingState)
 
             if (((this.refs.iScroll.scrollTop + this.refs.iScroll.clientHeight) >= (this.refs.iScroll.scrollHeight - (this.refs.iScroll.scrollHeight * 0.001))) && !this.state.loadingState) {
                 this.refs.iScroll.scrollTop -= (this.refs.iScroll.scrollHeight * 0.002)
@@ -78,7 +77,7 @@ class JokesBoard extends Component {
                 <h4 className="category-text">SCROLL HERE TO LOAD JOKES!</h4>
             )
         }
-        else if (((this.refs.iScroll.scrollTop + this.refs.iScroll.clientHeight) >= (this.refs.iScroll.scrollHeight - (this.refs.iScroll.scrollHeight * 0.1)))) {
+        else if ( String(this.state.categorySelected) === String('--Select--') && ((this.refs.iScroll.scrollTop + this.refs.iScroll.clientHeight) >= (this.refs.iScroll.scrollHeight - (this.refs.iScroll.scrollHeight * 0.1)))) {
             return (
                 <div>
                     <div className="progress">
