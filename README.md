@@ -14,7 +14,7 @@ To filter by a category yo have to select one of them and you will see just the 
 ## Top jokes
 If you access to the top clicking "Top jokes" on navbar you will get top 5 jokes. 
 
-It is possible to access using the url:
+It is possible to access to the N top using the url:
  http://localhost:3000/topjokes/N
 
 
