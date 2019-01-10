@@ -25,9 +25,4 @@ On root folder:
 > npm start
 ```
 
-On /client folder:
-```
-> npm start
-```
-
 Open the browser and go to localhost:3000
